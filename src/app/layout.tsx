@@ -16,6 +16,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
 import { GoogleAnalytics } from '@next/third-parties/google';
 const Disclaimer = dynamic(() => import("@/components/ui/overlay/Disclaimer"));
+import { env } from "@/utils/env";
 import Script from 'next/script'
 
 export const metadata: Metadata = {
@@ -75,7 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Suspense>
         <SpeedInsights debug={false} />
         <Analytics debug={false} />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ""} />
+        <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ""} />
         <Script type="text/javascript" id="ads">
           {`
      atOptions = {
