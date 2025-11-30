@@ -14,7 +14,9 @@ import { IS_PRODUCTION, SpacingClasses } from "@/utils/constants";
 import dynamic from "next/dynamic";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
+import { GoogleAnalytics } from '@next/third-parties/google';
 const Disclaimer = dynamic(() => import("@/components/ui/overlay/Disclaimer"));
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -73,6 +75,30 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Suspense>
         <SpeedInsights debug={false} />
         <Analytics debug={false} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ""} />
+        <Script type="text/javascript" id="ads">
+          {`
+     atOptions = {
+     'key' : 'ce910f1d802ef2b55735f3467148b6e7',
+     'format' : 'iframe',
+     'height' : 600,
+     'width' : 160,
+     'params' : {}
+     };
+	`}
+        </Script>
+        <Script
+          type="text/javascript"
+          src="//conservefelt.com/ce910f1d802ef2b55735f3467148b6e7/invoke.js"
+        />
+        <Script async strategy="afterInteractive" src="//acscdn.com/script/aclib.js" />
+        <Script data-cfasync="false" strategy="lazyOnload" id="adcash">
+          {`
+            aclib.runPop({
+        zoneId: '9033646',
+    });
+             `}
+        </Script>
       </body>
     </html>
   );
