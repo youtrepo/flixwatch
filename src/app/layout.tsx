@@ -79,18 +79,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? ""} />
         <Script type="text/javascript" id="ads">
           {`
-     atOptions = {
-     'key' : 'ce910f1d802ef2b55735f3467148b6e7',
-     'format' : 'iframe',
-     'height' : 600,
-     'width' : 160,
-     'params' : {}
-     };
+      atOptions = {
+  	'key' : '3aaf87511380be4d5f3feb7277d2c8e4',
+  	'format' : 'iframe',
+  	'height' : 250,
+  	'width' : 300,
+  	'params' : {}
+  };
 	`}
         </Script>
         <Script
           type="text/javascript"
-          src="//conservefelt.com/ce910f1d802ef2b55735f3467148b6e7/invoke.js"
+          src="//conservefelt.com/3aaf87511380be4d5f3feb7277d2c8e4/invoke.js"
         />
         <Script async strategy="afterInteractive" src="//acscdn.com/script/aclib.js" />
         <Script data-cfasync="false" strategy="lazyOnload" id="adcash">
